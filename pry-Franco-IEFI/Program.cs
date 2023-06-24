@@ -16,7 +16,7 @@ namespace pry_Franco_IEFI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmInicio());
         }
     }
 }

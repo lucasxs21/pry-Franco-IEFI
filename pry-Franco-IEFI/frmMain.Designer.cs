@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
@@ -39,12 +40,12 @@
             this.lblEdad = new System.Windows.Forms.Label();
             this.optM = new System.Windows.Forms.RadioButton();
             this.optF = new System.Windows.Forms.RadioButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblPuntaje = new System.Windows.Forms.Label();
+            this.gpbSexo = new System.Windows.Forms.GroupBox();
             this.lblName = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.gpbSexo.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNombre
@@ -53,6 +54,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 0;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // lblNombre
             // 
@@ -79,6 +81,7 @@
             this.txtEdad.Name = "txtEdad";
             this.txtEdad.Size = new System.Drawing.Size(100, 20);
             this.txtEdad.TabIndex = 3;
+            this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEdad_KeyPress);
             // 
             // txtPuntaje
             // 
@@ -86,6 +89,8 @@
             this.txtPuntaje.Name = "txtPuntaje";
             this.txtPuntaje.Size = new System.Drawing.Size(100, 20);
             this.txtPuntaje.TabIndex = 4;
+            this.txtPuntaje.TextChanged += new System.EventHandler(this.txtPuntaje_TextChanged);
+            this.txtPuntaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPuntaje_KeyPress);
             // 
             // txtApellido
             // 
@@ -93,6 +98,8 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(100, 20);
             this.txtApellido.TabIndex = 6;
+            this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // lblPais
             // 
@@ -105,6 +112,7 @@
             // 
             // cmbPais
             // 
+            this.cmbPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPais.FormattingEnabled = true;
             this.cmbPais.Location = new System.Drawing.Point(64, 192);
             this.cmbPais.Name = "cmbPais";
@@ -142,25 +150,25 @@
             this.optF.Text = "FEMENINO";
             this.optF.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // lblPuntaje
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(98, 404);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "PUNTAJE";
+            this.lblPuntaje.AutoSize = true;
+            this.lblPuntaje.Location = new System.Drawing.Point(98, 404);
+            this.lblPuntaje.Name = "lblPuntaje";
+            this.lblPuntaje.Size = new System.Drawing.Size(56, 13);
+            this.lblPuntaje.TabIndex = 13;
+            this.lblPuntaje.Text = "PUNTAJE";
             // 
-            // groupBox1
+            // gpbSexo
             // 
-            this.groupBox1.Controls.Add(this.optM);
-            this.groupBox1.Controls.Add(this.optF);
-            this.groupBox1.Location = new System.Drawing.Point(26, 284);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "SEXO";
+            this.gpbSexo.Controls.Add(this.optM);
+            this.gpbSexo.Controls.Add(this.optF);
+            this.gpbSexo.Location = new System.Drawing.Point(26, 284);
+            this.gpbSexo.Name = "gpbSexo";
+            this.gpbSexo.Size = new System.Drawing.Size(200, 100);
+            this.gpbSexo.TabIndex = 14;
+            this.gpbSexo.TabStop = false;
+            this.gpbSexo.Text = "SEXO";
             // 
             // lblName
             // 
@@ -172,35 +180,38 @@
             this.lblName.TabIndex = 15;
             this.lblName.Text = "EL CLUB";
             // 
-            // button1
+            // btnRegistrar
             // 
-            this.button1.Location = new System.Drawing.Point(150, 469);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Registrar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegistrar.Enabled = false;
+            this.btnRegistrar.Location = new System.Drawing.Point(150, 469);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistrar.TabIndex = 16;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnCerrar
             // 
-            this.button2.Location = new System.Drawing.Point(26, 469);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Cerrar\r\n";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCerrar.Location = new System.Drawing.Point(26, 469);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 17;
+            this.btnCerrar.Text = "Volver";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(249, 504);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.lblName);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.gpbSexo);
+            this.Controls.Add(this.lblPuntaje);
             this.Controls.Add(this.lblEdad);
             this.Controls.Add(this.cmbPais);
             this.Controls.Add(this.lblPais);
@@ -210,11 +221,13 @@
             this.Controls.Add(this.lblApellido);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtNombre);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro nuevo miembro ";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Load += new System.EventHandler(this.frmMain_Load);
+            this.gpbSexo.ResumeLayout(false);
+            this.gpbSexo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,11 +246,11 @@
         private System.Windows.Forms.Label lblEdad;
         private System.Windows.Forms.RadioButton optM;
         private System.Windows.Forms.RadioButton optF;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblPuntaje;
+        private System.Windows.Forms.GroupBox gpbSexo;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }
 
